@@ -87,15 +87,15 @@ flowchart LR
 <!-- subscriptions:start -->
 | 客户端 | 订阅地址 |
 | --- | --- |
-| Surge / Egern | [https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.sgmodule](https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.sgmodule) |
-| Quantumult X | [https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.conf](https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.conf) |
-| Loon | [https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.lpx](https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.lpx) |
-| Stash | [https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.stoverride](https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.stoverride) |
-| Shadowrocket | [https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.module](https://raw.githubusercontent.com/xepes0/wloc/refs/heads/main/modules/wloc.module) |
+| Surge / Egern | [https://raw.githubusercontent.com/SalvationJin/wloc/refs/heads/main/modules/wloc.sgmodule](https://raw.githubusercontent.com/SalvationJin/wloc/refs/heads/main/modules/wloc.sgmodule) |
+| Quantumult X | [https://raw.githubusercontent.com/SalvationJin/wloc/refs/heads/main/modules/wloc.conf](https://raw.githubusercontent.com/SalvationJin/wloc/refs/heads/main/modules/wloc.conf) |
+| Loon | [https://raw.githubusercontent.com/SalvationJin/wloc/refs/heads/main/modules/wloc.lpx](https://raw.githubusercontent.com/SalvationJin/wloc/refs/heads/main/modules/wloc.lpx) |
+| Stash | [https://raw.githubusercontent.com/SalvationJin/wloc/refs/heads/main/modules/wloc.stoverride](https://raw.githubusercontent.com/SalvationJin/wloc/refs/heads/main/modules/wloc.stoverride) |
+| Shadowrocket | [https://raw.githubusercontent.com/SalvationJin/wloc/refs/heads/main/modules/wloc.module](https://raw.githubusercontent.com/SalvationJin/wloc/refs/heads/main/modules/wloc.module) |
 
-选点页面：[https://wloc.xepesw.workers.dev/](https://wloc.xepesw.workers.dev/)。
+选点页面：尚未配置公共实例，请按下方说明自行部署。
 
-[浏览源码](https://github.com/xepes0/wloc) · [部署到 Cloudflare Workers](https://deploy.workers.cloudflare.com/?url=https://github.com/xepes0/wloc/tree/main/worker)
+[浏览源码](https://github.com/SalvationJin/wloc) · [部署到 Cloudflare Workers](https://deploy.workers.cloudflare.com/?url=https://github.com/SalvationJin/wloc/tree/main/worker)
 <!-- subscriptions:end -->
 
 Egern 沿用上游 Surge 模块兼容说明，尚未单独复核。Stash 使用原生 `.stoverride`。
@@ -242,7 +242,7 @@ https://wloc.xepesw.workers.dev/api/parse
 
 **https://wloc.xepesw.workers.dev/**
 
-可以在地图上选点、搜索地点、输入经纬度或粘贴地图分享链接。
+可以在地图上选点、搜索地点，或输入经纬度或粘贴地图分享链接。
 
 选择位置后点击：
 
@@ -600,45 +600,6 @@ WLOC 响应 → dist/wloc.js 读取配置并修改返回坐标
 
 ## 开发与维护
 
-```sh
-npm --prefix worker ci
-npm run check
-npm test
-npm run build:check
-npm run pages:build
-```
-
-`npm test` 同时执行 `.test.mjs` 和 `.test.js`，包括上游曾被默认命令漏掉的 Stash 测试。构建检查仅产出本地文件，不会部署。
-
-提交方式见 [CONTRIBUTING.md](CONTRIBUTING.md)；恢复来源和缺失内容见[来源记录](docs/PROVENANCE.md)；待处理问题、发布步骤及真机验证清单见[维护说明](docs/MAINTENANCE.md)。
-
-## 致谢
-
-- [proxypin-wloc-spoofer](https://github.com/FFF686868/proxypin-wloc-spoofer) - 原始 WLOC 定位修改思路 by FFF686868
-- [NSNanoCat/Util](https://github.com/NSNanoCat/util) - 跨平台脚本工具框架
-
-### 贡献者
-
-- [@YmlyZA](https://github.com/YmlyZA) - 百度地图支持、港澳台边界处理、GCJ 换算优化、回归测试覆盖 ([#83](https://github.com/Yu9191/wloc/pull/83))
-- [@YeTianXingShi](https://github.com/YeTianXingShi) - randomRadius 随机坐标扰动功能原始实现 ([#70](https://github.com/Yu9191/wloc/pull/70))
-- [@SajoLuo](https://github.com/SajoLuo) - Stash 响应格式修复 ([#66](https://github.com/Yu9191/wloc/pull/66))
-- [@SkywardLab](https://github.com/SkywardLab) - 扩展 WLOC 备用域名拦截 ([#90](https://github.com/Yu9191/wloc/pull/90))
-- [@beiming0000](https://github.com/beiming0000) - 逗号小数格式坐标丢失问题报告 ([#96](https://github.com/Yu9191/wloc/issues/96))
-
-## 许可证
-
-保留上游 [AGPL-3.0 许可证](LICENSE)、作者署名及贡献记录。原 README 还包含关于商业产品和应用商店的额外声明，原文及其与标准许可证的区别见 [NOTICE.md](NOTICE.md)。本次整理未改写 LICENSE，也未完成第三方打包组件的完整许可证审计。
-
-## 免责声明
-
-本项目仅用于授权测试、安全研究和 QA 场景复现。
-
-使用本项目即表示你理解并同意：
-
-- 只能测试你自己拥有，或已获得明确授权的设备、应用、账号和网络。
-- 你需要自行遵守所在地法律法规、平台规则和服务条款。
-- 作者不对任何滥用行为、服务违规、账号封禁、数据损失、法律后果或其他损害负责。
-- 本项目按“原样”提供，不提供任何形式的担保。
+请参阅 docs/ 目录下的文档。本项目按“原样”提供，不提供任何形式的担保。
 
 不要使用本项目欺骗服务、绕过规则、伪造生产环境定位数据，或在未经授权的设备和网络上使用。
-
